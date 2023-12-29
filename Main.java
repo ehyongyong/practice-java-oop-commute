@@ -1,5 +1,9 @@
 package step03commuting;
 
+import step03commuting.Bus;
+import step03commuting.Student;
+import step03commuting.Subway;
+
 /*
  * 3. Commuting 문제 명시 및 구현 실습
 
@@ -24,8 +28,8 @@ package step03commuting;
 public class Main {
 
 	public static void main(String[] args) {
-		Transportation bus8762 = new Transportation("8762번", Type.BUS, 800);
-		Transportation subway = new Transportation("2호선", Type.METRO, 900);
+		Bus bus8762 = new Bus("8762번", 800);
+		Subway subway = new Subway("2호선", 900);
 
 		Student s1 = new Student("Park", 10000);
 		Student s2 = new Student("Lee", 5000);

@@ -1,50 +1,35 @@
 package step03commuting;
 
-enum Type {
-	BUS("버스"), METRO("지하철");
+import step03commuting.Student;
 
-	private final String name;
+public class Transportation {
+	private String name;
+	private int fare;
+	private int passengers = 0;
+	private int income = 0;
 
-	Type(String name) {
+	public Transportation(String name, int fare) {
 		this.name = name;
+		this.fare = fare;
+	}
+
+	public void ride(Student student) {
+		student.pay(fare);
+
+		passengers += 1;
+		income += fare;
+	}
+
+	public void displayInfo(String type) {
+		System.out.println("======");
+		System.out.println("<" + name + " " + type + ">\n승객 수: " + passengers + "명\n매출액 " + income + "\n======");
 	}
 
 	public String getName() {
 		return name;
 	}
-}
 
-public class Transportation {
-	private String name;
-	private Type type;
-	private int fare;
-	private int passengers = 0;
-	private int income = 0;
-
-	public Transportation(String name, Type type, int fare) {
-		this.name = name;
-		this.type = type;
-		this.fare = fare;
-	}
-
-	public void ride(Student student) {
-		if (!student.isPayable(fare)) {
-			System.out.println(student.getName() + "학생 잔액 부족");
-
-			return;
-		}
-
-		student.pay(fare);
-
-		passengers += 1;
-		income += fare;
-
-		System.out.println(name + " " + type.getName() + "에 " + student.getName() + " 탑승");
-	}
-
-	public void displayInfo() {
-		System.out.println("======");
-		System.out.println(
-				"<" + name + " " + type.getName() + ">\n승객 수: " + passengers + "명\n매출액 " + income + "\n======");
+	public int getFare() {
+		return fare;
 	}
 }
